@@ -3,6 +3,7 @@ from fastapi.requests import Request
 from fastapi.responses import HTMLResponse
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
 from automacao import emitir_relatorio
 
@@ -12,30 +13,48 @@ import uvicorn
 
 app = FastAPI()
 
-templates = Jinja2Templates(directory='templates')
+# TEMPLATES
+templates = Jinja2Templates(directory='frontend/templates')
 
+# STATIC
+app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 
 @app.get('/', response_class=HTMLResponse)
 def home(request: Request):
     return templates.TemplateResponse(
         request=request,
-        name='index.html',
+        name='login.html',
         context={}
     )
 
-
-@app.post('/emitir-relatorio')
-def emitir():
-
-    thread = threading.Thread(
-        target=emitir_relatorio
+@app.post('/', response_class=HTMLResponse)
+def home(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name='login.html',
+        context={}
     )
 
-    thread.start()
+@app.get('/cadastro', response_class=HTMLResponse)
+def home(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name='register.html',
+        context={}
+    )
 
-    return JSONResponse({
-        'mensagem': 'Automação iniciada'
-    })
+# @app.post('/emitir-relatorio')
+# def emitir():
+
+#     thread = threading.Thread(
+#         target=emitir_relatorio
+#     )
+
+#     thread.start()
+
+#     return JSONResponse({
+#         'mensagem': 'Automação iniciada'
+#     })
 
 
 if __name__ == '__main__':
