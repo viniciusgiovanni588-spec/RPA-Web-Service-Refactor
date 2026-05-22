@@ -15,13 +15,17 @@ class AdvancedMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         client_ip = request.client.host
         current_time = time.time()
+        path = request.url.path
+
+        # Ignore static assets for rate limiting to avoid blocking CSS/JSImage loads
+        if path.startswith('/static'):
+            return await call_next(request)
+        
         if current_time - self.rate_limit_records[client_ip] < 1: # 1 request per second limit
             return Response(content='Rate limit exceeded', status_code=429)
         
         self.rate_limit_records[client_ip] = current_time
-        path = request.url.path
         await self.log_message(f'Request to {path}')
-
 
         # Process the request
         start_time = time.time()
