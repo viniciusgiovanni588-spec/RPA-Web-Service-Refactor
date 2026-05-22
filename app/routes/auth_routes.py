@@ -35,7 +35,7 @@ async def signup_login(full_name: str = Form(...), email: str = Form(...), passw
         supabase.table('user_table').insert({
             'full_name': full_name,
             'email': email,
-            'auth_user_id': auth_response.user.id
+            'auth_user_id': password
         }).execute()
         
         return RedirectResponse('/login', status_code=303)
