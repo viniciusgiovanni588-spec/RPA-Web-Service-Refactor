@@ -19,14 +19,14 @@
     <main class="container">
         <div class="forms-track">
             <section class="panel">
-                <form>
+                <form method="post" action="/login">
                     <h1>Entrar</h1>
                     <div class="input_box">
-                        <input placeholder="Usuário" id='email' type="email">
+                        <input placeholder="Usuário" id='email' name='email' type="email" required>
                         <i class="bx bxs-user"></i>
                     </div>
                     <div class="input_box">
-                        <input placeholder="Senha" id='password' type="password">
+                        <input placeholder="Senha" id='password' name="password" type="password" required>
                         <i class="bx bxs-lock-alt"></i>
                     </div>
 

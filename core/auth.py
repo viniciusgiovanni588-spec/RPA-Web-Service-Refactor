@@ -6,7 +6,7 @@ from .database import SUPABASE_JWT
 security = HTTPBearer()
 
 async def auth_middleware(request:Request, call_next):
-    token = request.cookies.get('acess_token')
+    token = request.cookies.get('access_token')
     if token and token.startswith('Bearer '):
         token = token.split(' ')[1]
         request.headers.__dict__['_list'].append(
@@ -28,5 +28,5 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         return payload
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Token has expired')
-    except jwt.PyJWKError as e:
+    except jwt.PyJWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Could not validate user')

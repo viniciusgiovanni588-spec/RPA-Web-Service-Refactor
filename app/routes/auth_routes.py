@@ -28,7 +28,7 @@ async def signup_login(email: str = Form(...), password: str = Form(...)):
             raise HTTPException(status_code=400, detail='Signup failed')
         return RedirectResponse('/login', status_code=303)
     except Exception as e:
-        raise HTTPException(status_code=400, detail='str(e)')
+        raise HTTPException(status_code=400, detail=str(e))
     
 
 @router.get('/login', response_class=HTMLResponse)
@@ -49,7 +49,7 @@ async def login_auth(response: Response, email: str = Form(...), password: str =
         if auth_response.user is None:
             raise HTTPException(status_code=400, detail='Login failed')
         access_token = auth_response.session.access_token
-        response = RedirectResponse('/', status_code=303)
+        response = RedirectResponse('/dashboard', status_code=303)
         response.set_cookie(key='access_token', value=f'Bearer {access_token}', httponly=True)
         return response
     except Exception as e:
