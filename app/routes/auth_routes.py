@@ -20,12 +20,15 @@ async def signup(request: Request):
 @router.post('/cadastro')
 async def signup_login(full_name: str = Form(...), email: str = Form(...), password: str = Form(...)):
     try:
+        normalized_email = email.strip().lower()
+        normalized_name = full_name.strip()
+
         auth_response = supabase.auth.sign_up({
-            'email': email,
+            'email': normalized_email,
             'password': password,
             'options': {
                 'data': {
-                    'full_name': full_name
+                    'full_name': normalized_name
                 }
             }
         })
@@ -33,14 +36,16 @@ async def signup_login(full_name: str = Form(...), email: str = Form(...), passw
             raise HTTPException(status_code=400, detail='Signup failed')
         
         supabase.table('user_table').insert({
-            'full_name': full_name,
-            'email': email,
-            'auth_user_id': password
+            'full_name': normalized_name,
+            'email': normalized_email,
+            'auth_user_id': auth_response.user.id
         }).execute()
         
         return RedirectResponse('/login', status_code=303)
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        error_message = str(e)
+        raise HTTPException(status_code=400,
+                            detail='Email inválido. Verifique se o endereço está completo e sem espaços extras.')
     
 
 @router.get('/login', response_class=HTMLResponse)
