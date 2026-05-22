@@ -25,7 +25,7 @@ async def signup_login(full_name: str = Form(...), email: str = Form(...), passw
 
     try:
         # Validação local para retornar feedback mais claro antes de chamar o banco de dados.
-        normalize_email = str(EmailStr(normalize_email))
+        normalize_email = str(EmailStr(normalized_email))
     except ValidationError:
         raise HTTPException(
             status_code=400,
@@ -58,7 +58,7 @@ async def signup_login(full_name: str = Form(...), email: str = Form(...), passw
         error_message = str(e)
         lowered_error = error_message.lower()
 
-        if 'email' in lowered_error and ('invalid' in lowered_error or 'invalid' in lowered_error):
+        if 'email' in lowered_error and ('invalid' in lowered_error):
             raise HTTPException(
                 status_code=400,
                 detail='Email inválido. Verifique se o endereço esta completo e sem espaços extras.'
