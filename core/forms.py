@@ -2,11 +2,27 @@ import inspect
 from fastapi import Form
 
 """
-Decorator that adds an 'as_form' class method to a Pydantic model,
-allowing it to be instantiated from form data submitted via an HTTP request.
+Utilitários para integração entre modelos Pydantic e formulários do FastAPI.
 """
 
 def as_form(cls):
+    """
+    Adiciona um método ``as_form`` a um modelo Pydantic.
+
+    Este decorator permite que o FastAPI converta automaticamente
+    dados enviados via ``form-data`` em uma instância do modelo Pydantic
+
+    O método ``as_form`` é criado dinamicamente com base nos campos
+    definidos no modelo, permitindo que cada atributo seja tratado
+    como um parâmetro ``Form`` do FastAPI.
+
+    Args:
+        cls:
+            Classe do modelo Pydantic que receberá o método ``as_form``.
+    Returns:
+        A própia classe modificada com o método ``as_form`` adicionado.
+    """
+
     new_params = []
 
     for field_name, model_field in cls.model_fields.items():
@@ -22,6 +38,17 @@ def as_form(cls):
         )
 
     async def _as_form(**data):
+        """
+        Cria uma instância do modelo Pydantic a partir dos dados do formulário.
+
+        Args:
+            **data:
+                Dados recebidos via formulário HTTP.
+
+        Returns:
+            Uma instância do modelo Pydantic decorado.
+        """
+
         return cls(**data)
     
     sig = inspect.signature(_as_form)

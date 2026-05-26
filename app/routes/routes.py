@@ -12,6 +12,14 @@ templates = Jinja2Templates(directory='frontend/templates')
 # Rota index
 @router.get('/', response_class=HTMLResponse)
 async def index(request: Request):
+    """
+    Renderiza a página de index
+
+    Args:
+        request (Request): requisição HTTP.
+    Returns:
+        HTMLReponse: página index.html renderizada.
+    """
     return templates.TemplateResponse(
         request=request,
         name='index.html',
@@ -22,6 +30,9 @@ async def index(request: Request):
 @router.get('/dashboard', response_class=HTMLResponse)
 async def dashboard(request: Request,
                     current_user: dict = Depends(get_current_user)):
+    """
+    Renderiza a página de dashboard
+    """
     return templates.TemplateResponse(
         name="dashboard.html",
         request=request,

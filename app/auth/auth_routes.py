@@ -135,7 +135,7 @@ async def login_auth(response: Response, email: str = Form(...), password: str =
         password (str): senha do usuário
 
     Returns:
-        RedirectResponse: redireciona para dashboard
+        RedirectResponse: redireciona para index
 
     Raises:
         HTTPException:

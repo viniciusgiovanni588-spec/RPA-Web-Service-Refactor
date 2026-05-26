@@ -14,7 +14,7 @@ def get_current_user(request: Request):
     """
     Autentica o usuário com base no token JWT armazenado em cookie.
 
-    Essa função valida o toke usando a chave pública (JWKS) do provedor
+    Essa função valida o token usando a chave pública (JWKS) do provedor
     de autenticação (Supabase) e retorna o payload decodificado.
 
     Args:
