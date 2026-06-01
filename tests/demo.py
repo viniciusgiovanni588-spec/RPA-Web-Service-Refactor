@@ -38,3 +38,10 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 demands = supabase.table('sectors').select("*").execute()
 print(demands)
+
+
+soma_setor = 0
+
+for sector in sectors:
+
+    soma_setor += sector['demand'] 

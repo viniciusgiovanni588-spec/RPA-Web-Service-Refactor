@@ -39,13 +39,9 @@
                 <div class="card card1">
                     <h3>CD 1200</h3>
                     <div class="card-info">
-                        {% for sector in sectors %}
-                        {% if sector['id_sector'] == 1 %}
-                        <p>Demanda: {{ sector['demand'] }}</p>
-                        <p>Pessoas: {{ sector['peoples'] }}</p>
+                        <p>Demanda: {{ t_dem }}</p>
+                        <p>Pessoas: {{ t_peo }}</p>
                         <p>Finalizado: 45%</p>
-                        {% endif %}
-                        {% endfor %}
                     </div>
 
                     <a href="/" class="expand-btn">
@@ -56,9 +52,13 @@
                 <div class="card card2">
                     <h3>Abastecimento de Lojas</h3>
                     <div class="card-info">
-                        <p>Demanda:</p>
-                        <p>Pessoas:</p>
+                        {% for sector in sectors %}
+                        {% if sector['id_sector'] == 1 %}
+                        <p>Demanda: {{ sector['demand'] }}</p>
+                        <p>Pessoas: {{ sector['peoples'] }}</p>
                         <p>Finalizado:</p>
+                        {% endif %}
+                        {% endfor %}
                     </div>
 
                     <a href="/" class="expand-btn">
@@ -69,9 +69,13 @@
                 <div class="card card3">
                     <h3>Online</h3>
                     <div class="card-info">
-                        <p>Demanda:</p>
-                        <p>Pessoas:</p>
+                        {% for sector in sectors %}
+                        {% if sector['id_sector'] == 2 %}
+                        <p>Demanda: {{ sector['demand'] }}</p>
+                        <p>Pessoas: {{ sector['peoples'] }}</p>
                         <p>Finalizado:</p>
+                        {% endif %}
+                        {% endfor %}
                     </div>
 
                     <a href="/" class="expand-btn">
@@ -82,9 +86,13 @@
                 <div class="card card4">
                     <h3>Pesados</h3>
                     <div class="card-info">
-                        <p>Demanda:</p>
-                        <p>Pessoas:</p>
+                        {% for sector in sectors %}
+                        {% if sector['id_sector'] == 3 %}
+                        <p>Demanda: {{ sector['demand'] }}</p>
+                        <p>Pessoas: {{ sector['peoples'] }}</p>
                         <p>Finalizado:</p>
+                        {% endif %}
+                        {% endfor %}
                     </div>
 
                     <a href="/" class="expand-btn">
@@ -95,9 +103,13 @@
                 <div class="card card5">
                     <h3>P.A.R</h3>
                     <div class="card-info">
-                        <p>Demanda:</p>
-                        <p>Pessoas:</p>
+                        {% for sector in sectors %}
+                        {% if sector['id_sector'] == 4 %}
+                        <p>Demanda: {{ sector['demand'] }}</p>
+                        <p>Pessoas: {{ sector['peoples'] }}</p>
                         <p>Finalizado:</p>
+                        {% endif %}
+                        {% endfor %}
                     </div>
 
                     <a href="/" class="expand-btn">

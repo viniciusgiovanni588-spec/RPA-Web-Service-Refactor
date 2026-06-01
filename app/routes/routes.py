@@ -48,7 +48,7 @@ async def landpage(request: Request,
                    current_user: dict = Depends(get_current_user),
                    user_name: str = Depends(name_user_auth)):
     
-    sectors = await demand_sector()
+    sectors, t_dem, t_peo = await demand_sector()
 
     return templates.TemplateResponse(
         name="landpage.html",
@@ -56,6 +56,8 @@ async def landpage(request: Request,
         context={
             'user_email': current_user['email'],
             'user_name': user_name,
-            'sectors': sectors
+            'sectors': sectors,
+            't_dem': t_dem,
+            't_peo': t_peo
         }
     )
