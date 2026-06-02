@@ -84,29 +84,43 @@ nav a:hover::after {
 
 .liquid-sidebar {
     height: calc(100vh - 80px);
-    background: #060137;
+    background: transparent;
     border-radius: 0 32px 32px 0;
     box-shadow: 16px 0 40px rgba(6, 1, 55, 0.32);
     overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color:rgba(255, 255, 255, 0.55) rgba(255, 255, 255, 0.08);
+    scrollbar-color: transparent transparent;
     padding: 2rem 1.25rem;
+}
+
+.liquid-sidebar.is-scrolling {
+    scrollbar-color: rgba(255, 255, 255, 0.34) transparent;
 }
 
 .liquid-sidebar::-webkit-scrollbar {
     width: 8px;
 }
 
+.liquid-sidebar::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
 .liquid-sidebar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
+    background: transparent;
 }
 
 .liquid-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.55);
-    border-radius: 999px
+    background: transparent;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+}
+
+.liquid-sidebar.is-scrolling::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.34);
 }
 
 .liquid-sidebar__header {
