@@ -95,7 +95,7 @@ nav a:hover::after {
     overscroll-behavior: contain;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
-    padding: 2rem 1.25rem;
+    padding: 2rem 0rem;
     width: var(--liquid-sidebar-width);
     transform: translateX(0);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -136,7 +136,7 @@ nav a:hover::after {
 }
 
 .liquid-sidebar-toggle__icon {
-    color: #060137;
+    color: #000;
     font-size: 1.8rem;
     font-weight: 800;
     line-height: 1;
@@ -186,7 +186,7 @@ nav a:hover::after {
     display: inline-block;
     margin-bottom: 0.35rem;
     color: rgba(255, 255, 255, 0.65);
-    font-size: 0.74rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
@@ -223,6 +223,7 @@ nav a:hover::after {
     text-align: left;
     white-space: normal;
     transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
 }
 
 .liquid-sidebar__item:before,
@@ -241,8 +242,8 @@ nav a:hover::after {
     height: 160px;
     right: -56px;
     top: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.96) 0%, rgba(105, 221, 255, 0.86) 42%, rgba(46, 95, 255, 0.78) 72%);
-    filter: blur(1px);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.205), rgba(105, 220, 255, 0.274), rgba(46, 95, 255, 0.178));
+    filter: blur(30px);
     transform: translateY(-50%) scale(0.18);
 }
 
@@ -251,8 +252,8 @@ nav a:hover::after {
     height: 72px;
     right: 36px;
     bottom: -34px;
-    background: rgba(255, 255, 255, 0.75);
-    filter: blur(12px);
+    background: rgba(255, 255, 255, 0);
+    filter: blur(70px);
     transform: scale(0.3);
 }
 
@@ -280,10 +281,9 @@ nav a:hover::after {
 #panel-automation-12:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-12"],
 #panel-automation-13:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-13"],
 #panel-automation-14:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-14"],
-#panel-automation-15:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-15"],
 #panel-bot-1:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-bot-1"],
 #panel-bot-2:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-bot-2"] {
-    color: #060137;
+    color: #fff;
     border-color: rgba(255, 255, 255, 0.85);
     box-shadow: inset 0 0 26px rgba(255, 255, 255, 0.22), 0 16px 28px rgba(0, 0, 0, 0.2);
 }
@@ -316,8 +316,6 @@ nav a:hover::after {
 #panel-automation-13:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-13"]::after,
 #panel-automation-14:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-14"]::before,
 #panel-automation-14:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-14"]::after,
-#panel-automation-15:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-15"]::before,
-#panel-automation-15:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-automation-15"]::after,
 #panel-bot-1:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-bot-1"]::before,
 #panel-bot-1:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-bot-1"]::after,
 #panel-bot-2:checked ~ .liquid-sidebar .liquid-sidebar__item[for="panel-bot-2"]::before,
@@ -340,7 +338,6 @@ nav a:hover::after {
 #panel-automation-12:checked ~ .liquid-sidebar-frame .liquid-sidebar-panel--automation-12,
 #panel-automation-13:checked ~ .liquid-sidebar-frame .liquid-sidebar-panel--automation-13,
 #panel-automation-14:checked ~ .liquid-sidebar-frame .liquid-sidebar-panel--automation-14,
-#panel-automation-15:checked ~ .liquid-sidebar-frame .liquid-sidebar-panel--automation-15,
 #panel-bot-1:checked ~ .liquid-sidebar-frame .liquid-sidebar-panel--bot--1,
 #panel-bot-2:checked ~ .liquid-sidebar-frame .liquid-sidebar-panel--bot--2 {
     display: block;
@@ -391,6 +388,7 @@ nav a:hover::after {
     line-height: 1;
     margin-bottom: 0.75rem;
 }
+
 
 .liquid-sidebar-panel__header p {
     max-width: 620px;
