@@ -75,6 +75,22 @@ Utilizadas para:
 - Construção de indicadores históricos.
 """
 
+COLUNAS_PENDENTES = [
+    "Data ilpn´s",
+    "Usuário",
+    "Quantidade ILPNs",
+    "Ilpn´s em atraso",
+    "Tempo de atraso",
+    "Fluxo aplicado",
+    "Referencia 1",
+    "Referencia 2",
+    "Destinatários",
+    "LPN",
+    "Setor",
+    "Atributo item",
+    "Inventory type",
+]
+
 @dataclass(frozen=True)
 class HistoricoResumo:
     """
